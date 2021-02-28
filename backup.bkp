@@ -1,0 +1,36 @@
+
+#define PORTA_BTN 10
+int circuito_acionado = false;
+bool botao_acionado_anterior = false;
+
+void setup() {
+
+// 3. Initialize library
+loadcell.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+loadcell.set_scale(LOADCELL_DIVIDER);
+loadcell.set_offset(LOADCELL_OFFSET);
+  
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(PORTA_BEEP,OUTPUT);
+  pinMode(PORTA_BTN,INPUT_PULLUP);
+  digitalWrite(PORTA_BEEP,LOW);
+  //beepNumero(123);
+    beepNumero(403);
+}
+
+void loop() {
+  //verificaAcionamento();
+  //acionaBeep(circuito_acionado);
+  Serial.print("Weight: ");
+  Serial.println(loadcell.get_units(10), 2);
+}
+void verificaAcionamento(){
+  //Serial.println(digitalRead(PORTA_BTN));
+  bool botao_acionado = digitalRead(PORTA_BTN)==LOW;
+  if (botao_acionado!=botao_acionado_anterior && botao_acionado){
+    circuito_acionado = !circuito_acionado;
+  }
+  botao_acionado_anterior = botao_acionado;
+  //Serial.println(circuito_acionado);
+}
