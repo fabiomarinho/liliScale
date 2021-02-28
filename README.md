@@ -7,5 +7,5 @@ The objective was to build a vision accessible scale (for vision impaired people
   <source src="media/IMG_0270.MP4" type="video/mp4">
 </video>
 
-![teste](media/IMG_0270.MP4)
+![](./media/IMG_0270.MP4)
 
